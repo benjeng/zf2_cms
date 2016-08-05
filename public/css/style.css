@@ -1,0 +1,125 @@
+body {
+    
+}
+div {
+    display: block;
+}
+
+a,a:link,a:hover,a:active,a:focus,a:visited { text-decoration:none; }
+
+div#logo {
+    padding-top:300px;
+    margin-left:340px;
+}
+
+div#topbar {
+    background:url('../img/Top_bar.jpg') no-repeat;
+    height:48px;
+    margin-top:15px;
+    margin-left:180px;
+}
+div#topbar span{
+    margin-top:11px;
+    font:20px Arial;
+    display:inline-block;
+}
+#topbar a{color:white;}
+span.home {margin-left:80px;}
+span.product {margin-left:60px;}
+span.about {margin-left:52px;}
+span.faq {margin-left:57px;}
+span.contact {margin-left:58px;}
+
+div.header {
+    height:525px;
+    min-width:1200px;
+    background:url('../img/Background_head.jpg') no-repeat;
+}
+
+div#banner {
+    height:440px;
+    width:832px;
+    margin-left:180px;
+}
+
+div#middle_bar {
+    background:url('../img/Middle_bar.jpg') no-repeat;
+    margin-left:175px;
+    height:194px;
+}
+#middle_bar a{
+    width:254px;
+    height:191px;
+    display:inline-block;
+    margin-right:29px;
+}
+
+div#product {
+    margin-top:25px;
+    height:1684px;
+    margin-left:175px;
+}
+.plu_block{
+    width:830px;
+    background:url('../img/Horizontal_Separator.jpg') no-repeat;
+    background-position:0px 30px;
+}
+.plu_block span{
+    font:24px Arial;
+    font-weight:600;
+    color:#444;
+    margin-left:40px;
+}
+.plu_block li{
+    margin:30px;
+    display:inline-block;
+}
+.plu_block li span{
+    display:block;
+    color:#444;
+    font:16px Arial;
+}
+.plu_block li img{
+    width:200px;
+    height:230px;
+}
+
+div#buttom_bar {
+    background:url('../img/Buttom_bar.jpg') no-repeat;
+    height:242px;
+    margin-left:180px;
+}
+div#buttom_bar span{
+    margin-top:16px;
+    color:white;
+    font:14px Arial;
+    display:inline-block;
+}
+span.left {margin-left:25px;}
+span.right {margin-left:160px;}
+div.footer {
+    background:url('/img/Background_footer.jpg') no-repeat;
+}
+
+.slider img{
+    width:800px;
+    height:370px;
+}
+
+div.general_wrap {
+    border:solid 1px red;
+    width:823px;
+    margin-left:180px;
+    padding:5px;
+}
+
+div#main_wrap {
+    margin-left:auto;
+    margin-right:auto;
+    border:solid 1px green;
+    width:1200px;
+}
+
+div.repeat {
+    background:url('/img/Background_repeat.jpg') repeat-y;
+}

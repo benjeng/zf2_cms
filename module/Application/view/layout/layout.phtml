@@ -1,0 +1,79 @@
+<?php echo $this->doctype(); ?>
+
+<html>
+<head>
+
+<?php
+//Get SEO data
+$mvcChild = $this->viewModel()->getCurrent()->getChildren();
+$currentView = $mvcChild[0];
+$seo_title = $currentView->seo->seo_title;
+$seo_keywords = $currentView->seo->seo_keywords;
+$seo_description = $currentView->seo->seo_description;
+//Get SEO data(END)
+$page_title = $currentView->page_article->page_title;
+//$imgLogo = "/tmp/".$currentView->page_article->logo;
+$imgLogo = "/tmp/Logo.jpg";
+?>
+    
+<meta charset="utf-8">
+<link rel="stylesheet" href="/min/?g=site-css&debug=1" type="text/css" media="screen" title="no title" charset="utf-8">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<meta name="description" http-equiv="description" content="<?php echo $seo_description;?>" />
+<meta name="keywords" http-equiv="keywords" content="<?php echo $seo_keywords;?>" />
+<title><?php echo $page_title;?></title>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56175857-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+<body>
+<div id='main_wrap'>
+    <div class='header'>
+        <div id='logo'>
+                <img src='<?php echo $imgLogo;?>'>
+        </div>
+        <div id='topbar'>
+                <span class='home'><a href='/'>Home</a></span>
+                <span class='product'><a href=''>Products</a></span>
+                <span class='about'><a href='/about'>About Our Shop</a></span>
+                <span class='faq'><a href='/faq'>FAQ</a></span>
+                <span class='contact'><a href='/contact'>Contact Us</a></span>
+        </div>
+    </div>
+    <div class='repeat'>
+    <?php echo $this->content; ?>
+    </div>
+
+    <div class='footer'>
+        <div id="buttom_bar">
+                <span class='left'>Copyright @ 2014 Lavender Backyard Garden</span>
+                <span class='right'>398 Marshmeadow Rd, RD6, Hamilton, New Zealand</span>
+        </div>
+    </div>
+</div>
+
+<style>
+#test_message {display:none;background:white;}
+</style>
+<button id='cme'>click me</button>
+<div id="test_message">
+    <span class="button b-close"><span>X</span></span>
+    If you can't get it up use<br><span class="logo">bPopup</span>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="/min/?g=site-js" type="text/javascript" charset="utf-8"></script>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/jquery.glide.css">
+
+</body>
+</html>

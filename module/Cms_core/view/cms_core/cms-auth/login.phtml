@@ -1,0 +1,156 @@
+<?php echo $this->doctype(); ?>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="/min/?g=cms-js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="/min/?g=cms-css&debug=1" type="text/css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+    <div class="auth_form_top">
+        <span><?php echo $this->applicationConfig['project_title'];?></span>
+    </div>
+    <div class="auth_form">
+        <img class="icon" src='/img/login_key.png'>
+<?php
+
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+    'cms_auth',
+    array('action' => 'authenticate')
+));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formCollection($this->form);
+//echo $this->formRow($form->get('username'));
+//echo $this->formRow($form->get('password'));
+//echo $this->formRow($form->get('rememberme'), 'append');
+//echo $this->formRow($form->get('captcha'));
+//echo $this->formRow($form->get('submit'));
+echo $this->form()->closeTag();
+ 
+if ($this->messages){
+    echo '<ul>';
+    foreach($this->messages as $message)
+    {
+        echo '<li>'.$message.'</li>';
+    }
+    echo '</ul>';
+}
+
+?>
+    </div>
+<footer>
+    <p>2013 &copy; footer content</p>
+</footer>
+</body>
+</html>
+
+<style>
+.auth_form_top{
+    margin:0px auto;
+    margin-top:60px;
+    height:80px;
+    width:360px;
+    border-radius:14px 14px 0 0;
+    border:solid 5px #511;
+    background-color:#822;
+    color:white;
+    border-bottom:none;
+}
+.auth_form_top span{
+    margin:20px auto;
+    display:block;
+    width:200px;
+    text-align:center;
+    font-size:30px;
+    font-style:italic;
+}
+.auth_form {
+    width:320px;
+    margin:0 auto;
+    border:solid 5px #AAA;
+    border-radius:0 0 14px 14px;
+    padding:0 20px 20px 20px;
+    background-color:#EFEFEF;
+    border-top:none;
+}
+.auth_form label{
+    display:block;
+    width:220px;
+    float:right;
+}
+.auth_form span{
+    font-size:14px;
+    color:#578;
+    width:220px;
+    display:block;
+    margin-left:5px;
+    font-size:12px;
+}
+.auth_form input[type=submit]{
+    width:300px;
+    margin:10px auto;
+    color:#008;
+    font-size:16px;
+    border-radius:5px;
+    border:solid 1px #88A;
+    
+    background: #b7deed; /* Old browsers */
+    background: -moz-linear-gradient(top,  #b7deed 0%, #71ceef 50%, #21b4e2 51%, #b7deed 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b7deed), color-stop(50%,#71ceef), color-stop(51%,#21b4e2), color-stop(100%,#b7deed)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #b7deed 0%,#71ceef 50%,#21b4e2 51%,#b7deed 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #b7deed 0%,#71ceef 50%,#21b4e2 51%,#b7deed 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #b7deed 0%,#71ceef 50%,#21b4e2 51%,#b7deed 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #b7deed 0%,#71ceef 50%,#21b4e2 51%,#b7deed 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#b7deed',GradientType=0 ); /* IE6-9 */
+
+}
+.auth_form input[type=submit]:hover{
+    border:solid 1px #226;
+    color:#FFF;
+    
+    background: #499bea; /* Old browsers */
+    background: -moz-linear-gradient(top,  #499bea 0%, #207ce5 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#499bea), color-stop(100%,#207ce5)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #499bea 0%,#207ce5 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5',GradientType=0 ); /* IE6-9 */
+
+}
+.auth_form input[type=submit]:active{
+    border:solid 1px #226;
+    color:#FFF;
+    
+    background: #2f4d93; /* Old browsers */
+    background: -moz-linear-gradient(top,  #2f4d93 0%, #094d89 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2f4d93), color-stop(100%,#094d89)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #2f4d93 0%,#094d89 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #2f4d93 0%,#094d89 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #2f4d93 0%,#094d89 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #2f4d93 0%,#094d89 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2f4d93', endColorstr='#094d89',GradientType=0 ); /* IE6-9 */
+
+}
+.auth_form input[type=text], .auth_form input[type=password]{
+    width:200px;
+}
+.auth_form li{
+    font-size:12px;
+    color:#888;
+}
+.auth_form form{
+    margin-left:10px;
+}
+.auth_form img.icon{
+    position:relative;
+    margin-bottom:-60px;
+    top:24px;
+    left:-4px;
+}
+.auth_form img {
+    margin-left:5px;
+}
+</style>

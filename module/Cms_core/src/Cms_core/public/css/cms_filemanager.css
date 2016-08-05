@@ -1,0 +1,78 @@
+#filemanager_container {
+    width:660px;
+    height:400px;
+}
+#filemanager_container #workarea{
+    height:348px;
+    width:280px;
+    float:right;
+    margin:2px;
+}
+#filemanager_container #tree {
+    overflow:auto;
+    width:360px;
+    height:355px;
+    border:solid 1px #DDD;
+    float:left;
+    margin:2px;
+}
+#filemanager_container #current {
+    padding:2px;
+    margin:2px;
+    width:172px;
+    display:inline-block;
+}
+#filemanager_container .cms_btn {
+    width:78px;
+    display:inline-block;
+    text-align:center;
+}
+#filemanager_container #btnarea{
+    float:left;
+    height:38px;
+    width:654px;
+    margin:2px;
+}
+#workarea .oneline{
+    display:inline-block;
+    width:100%;
+    padding:2px;
+}
+
+#workarea #message {
+    color:#AAA;
+    height:20px;
+    padding:3px 0;
+}
+
+#workarea .tmpImg{
+    /*border:solid 1px red;*/
+    width:240px;
+    height:180px;
+    margin:4px auto;
+}
+#filemanager_container input{
+    padding:2px;
+    margin:2px;
+    border-radius:3px;
+    border:solid 1px #CCC;
+    height:20px;
+    font-size:12px;
+}
+#filemanager_container #movefolder {
+    width:180px;
+}
+#filemanager_container input[type=text] {
+    width:166px;
+}
+#pluploader {
+    width:660px;
+    height:354px;
+    display:none;
+    position:absolute;
+    top:6px;
+    left:8px;
+    background-color:orange;
+    border:solid 2px brown;
+    border-radius:6px;
+}

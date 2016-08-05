@@ -1,0 +1,40 @@
+<h2 style='margin-top:0'><?php echo $this->title;?> <span style='font-size:16px;color:green'>Add</span></h2>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('cms_node', array('action' => 'add')));
+$form->prepare();
+$formGroups = $form->groups();
+
+echo $this->form()->openTag($form);
+foreach($formGroups as $group_name => $_group){
+    $_tmp = explode("@@@", $group_name);//[0]Name [1]Legend
+    echo "<fieldset><legend>{$_tmp[1]}</legend>";
+    foreach($_group as $_fieldName){
+        $element = $form->get($_fieldName);
+        if($_tmp[0] != '_control') echo "<div>";
+    //    echo $this->formRow($element);
+        $label = ($element->getAttribute('type')!='hidden')?$this->formLabel($element):"";
+        switch($element->getAttribute('type')){
+            default:
+            case "text":echo $label.$this->formInput($element);break;
+            case "select":echo $label.$this->formSelect($element);break;
+            case "radio":echo $label.$this->formRadio($element);break;
+            case "textarea":echo $label.$this->formTextarea($element);break;
+            case "checkbox":echo $label.$this->formCheckbox($element);break;
+            case "multi_checkbox":echo $label.$this->formMultiCheckbox($element);break;
+            case "button":echo $this->formButton($element);break;
+            case "submit":echo $this->formSubmit($element);break;
+        }
+        echo $this->formElementErrors($element);
+        if($_tmp[0] != '_control'){
+            echo "<p class='hint'>".$element->getAttribute('description')."</p>";
+            echo "</div>\n";
+        }
+    }
+    echo "</fieldset>";
+}
+echo $this->form()->closeTag();
+
+if($this->message) echo print_r($this->message,true);
+?>

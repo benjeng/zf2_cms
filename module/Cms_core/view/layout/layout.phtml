@@ -1,0 +1,99 @@
+<?php echo $this->doctype(); ?>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="/min/?g=cms-js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="/min/?g=cms-css&debug=1" type="text/css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+<div class="topNavi">
+    <div class="logo"><?php echo $this->applicationConfig['main']['cms']['project_title'];?></div>
+    <div style='float:left;'>
+        <ul id="nav">
+        <?php echo renderMenu($this->topNaviMenus);?>
+        </ul>
+    </div>
+    <div style="float:right">
+        <ul id="nav">
+            <li><a href="#">Settings</a>
+                <ul>
+                    <li><a href="/admin/user">Users</a></li>
+                    <li><a href="/admin/systeminfo">Systeminfo</a></li>
+                </ul>
+            </li>
+            <li><a href="/admin/auth/logout">Logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<?php if($this->sideWidget):?>
+<div class="sideWidget">
+    <a class="handle" href="javascript:;">Widget</a>
+    <?php echo $this->sideWidget;?>
+</div>
+<?php endif;?>
+
+<div class="container">
+    <?php echo $this->content; ?>
+</div>
+
+<!-- filemamanger-->
+<div id="filemanager_container" class="popup_modal_container">
+    <div id="tree">
+        <ul class="easyuitree" data-options="animate:true,lines:true"></ul>
+    </div>
+    <div id="workarea">
+        <div class="tmpImg"><img width="240" height="180" id="thumb" style="" src="/img/filemanager_default.jpg"></div>
+        <span class="oneline" id="message"></span>
+        <div class="oneline"><span id="current">/</span><span class="cms_btn" id="drop">Drop</span></div>
+        <div class="oneline"><input type="text" id="createfolder"> <span id="create" class="cms_btn">New</span></div>
+        <div class="oneline"><input type="text" id="renamefolder"> <span id="rename" class="cms_btn">Rename</span></div>
+        <div class="oneline"><select id="movefolder"> </select><span id="move" class="cms_btn">Move</span></div>
+    </div>
+    <div id="btnarea">
+        <span><a class="cms_btn" href="#" id="reload">Reload</a></span>
+        <span><a class="cms_btn" id="upload">Upload</a></span>
+        <span><a class="cms_btn" id="pick">Pick</a></span>
+        <span style="float:right"><a class="cms_btn" id="close">Close</a></span>
+    </div>
+    <form>
+        <div id="pluploader">
+            <p>You browser doesn't have support upload.</p>
+        </div>
+    </form>
+</div>
+<!-- filemamanger-->
+
+<!-- Article add popup -->
+<div id="add-new" class="popup_modal_container">Hello</div>
+<!-- Article add popup(END) -->
+
+<div id="popupmodal_background"></div>
+
+<footer>
+    <p>2013 &copy; footer content</p>
+</footer>
+</body>
+</html>
+
+<?php
+//Render TopNavi
+function renderMenu($arrMenu){
+    $result = "";
+    if(!is_array($arrMenu)) return $result;
+    foreach($arrMenu as $menuName => $_item){
+        if(!is_array($_item)){//Leaf
+            $menuConfig = explode("@@@", $_item);//[0]Menu url, [1]class [2]id
+            $menuClass = (isset($menuConfig[1])&&$menuConfig[1])?"class='{$menuConfig[1]}'":"";
+            $menuId = (isset($menuConfig[2])&&$menuConfig[2])?"id='{$menuConfig[2]}'":"";
+            $result .= "<li><a href='{$menuConfig[0]}' {$menuClass}>{$menuName}</a></li>\n";
+        }else{//Submenu
+            $result .= "<li><a href='#'>{$menuName}</a><ul>\n";
+            $result .= renderMenu($_item);
+            $result .= "</ul></li>\n";
+        }
+    }
+    return $result;
+}
+?>

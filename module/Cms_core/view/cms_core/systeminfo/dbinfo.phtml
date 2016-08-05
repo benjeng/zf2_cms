@@ -1,0 +1,26 @@
+
+<div id="systeminfocontent">
+    <div id="navi">
+        <?php echo $this->partial('systeminfo_LeftNavi', array());?>
+    </div>
+    <div id="main">
+        <div class="dbWraper">
+        <table id="dbTable">
+            <thead>
+                <tr>
+                    <th>Table Name</th>
+                    <th>Records</th>
+                </tr>
+            </thead>
+            <tbody>
+        <?php foreach($this->tablesInfo as $tableInfo):?>
+            <tr>
+                <td><?php echo $tableInfo['table'];?></td>
+                <td class="number"><?php echo number_format($tableInfo['records']);?></td>
+            </tr>
+        <?php endforeach; ?>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>

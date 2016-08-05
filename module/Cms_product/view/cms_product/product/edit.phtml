@@ -1,0 +1,26 @@
+<h2 style='margin-top:0'><?php echo $this->title;?> <span style='font-size:16px;color:green'>Edit</span></h2>
+
+<div class="easyui-tabs" style="width:800px;height:auto;padding-left:20px">
+    <div title="Main" style="padding:10px">
+<?php
+echo $this->cmsFormHelper()->renderEditForm($this->form, $this);
+?>
+    </div>
+<!-- node -->
+<?php foreach($this->tabs as $_title => $_item):?>
+    <div title="<?php echo $_title;?>" style="padding:10px" class="node" rel="/<?php echo $this->id;?>/article@@@<?php echo $_item['type'];?>@@@<?php echo $_item['template'];?>"></div>
+<?php endforeach;?>
+<!-- node(END) -->
+    <div title="SEO" style="padding:10px" class="seo">
+        <span class="returnMessage"></span>
+<!-- seo-->
+<?php
+$seo_form = $this->seo_form;
+$seo_form->prepare();
+echo $this->form()->openTag($seo_form);
+echo $this->formCollection($seo_form);
+echo $this->form()->closeTag();
+?>
+<!-- seo(END)-->
+    </div>
+</div>

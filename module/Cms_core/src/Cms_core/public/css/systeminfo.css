@@ -1,0 +1,59 @@
+/*Style for systeminfo sub-function in Cms_core*/
+
+#systeminfocontent {
+    overflow:auto;
+    display:block;
+    width:1000px;
+}
+#systeminfocontent #navi {
+    float:left;
+    margin:0 20px;
+    width:240px;
+}
+#navi ul {list-style:none;padding-left:14px}
+
+#systeminfocontent #main {
+    float:left;
+    width:640px;
+}
+
+.dbWraper {
+    border:solid 1px #999;
+    border-radius:5px;
+    padding:3px;
+    background-color:#CCC;
+}
+#dbTable {
+    width:100%;
+    background-color:white;
+}
+#dbTable thead {background-color:#BEF}
+#dbTable th, #dbTable td {
+    border:solid 1px gray;
+    padding:1px 8px;
+}
+#dbTable .number{
+    text-align:right;
+}
+
+#systeminfo_folderstructure ul {list-style:none}
+#systeminfo_folderstructure .foldername {color:black;font-size:16px}
+#systeminfo_folderstructure .info {color:gray;font-size:12px;padding-left:10px}
+
+form > label{
+    display:block;
+    width:600px;
+}
+
+#config label{
+    display:block;
+    width:300px;
+    font-size:13px;
+    color:#555;
+    margin:4px 0;
+    padding-left:8px;
+}
+#config fieldset label{
+    width:auto;
+    display:inline-block;
+}

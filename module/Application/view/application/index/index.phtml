@@ -1,0 +1,56 @@
+<div id='banner'>
+	 <div class="slider">
+	 	<ul class="slider__wrapper">
+        <?php foreach($this->slides as $item): ?>
+	 		<li class="slider__item">
+	 			<img src='<?php echo $item['img'];?>'>
+	 		</li>
+        <?php endforeach;?>
+	 	</ul>
+	 </div>
+</div>
+
+<div id='middle_bar'>
+	<a href="#dailybarsoap">&nbsp;</a>
+	<a href="#artisticluxurysoap">&nbsp;</a>
+	<a href="#yourgiftbox">&nbsp;</a>
+</div>
+
+<div id="product">
+	<div class='plu_block' id="dailybarsoap">
+		<span>Daily Bar Soap</span>
+		<ul>
+        <?php foreach($this->products['dailybarsoap'] as $item):?>
+			<li>
+				<img src='<?php echo $item['img'];?>'>
+				<span><?php echo $item['name'];?></span>
+				<span><?php echo $item['price'];?></span>
+			</li>
+        <?php endforeach;?>
+		</ul>
+	</div>
+	<div class='plu_block' id="artisticluxurysoap">
+		<span>Artistic Luxury Soap</span>
+		<ul>
+		<?php foreach($this->products['artisticluxurysoap'] as $item):?>
+			<li>
+				<img src='<?php echo $item['img'];?>'>
+				<span><?php echo $item['name'];?></span>
+				<span><?php echo $item['price'];?></span>
+			</li>
+        <?php endforeach;?>
+		</ul>
+	</div>
+	<div class='plu_block' id="yourgiftbox">
+		<span>Your Gift Box</span>
+		<ul>
+		<?php foreach($this->products['yourgiftbox'] as $item):?>
+			<li>
+				<img src='<?php echo $item['img'];?>'>
+				<span><?php echo $item['name'];?></span>
+				<span><?php echo $item['price'];?></span>
+			</li>
+        <?php endforeach;?>
+		</ul>
+	</div>
+</div>

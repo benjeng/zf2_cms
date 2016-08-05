@@ -1,0 +1,27 @@
+
+<div id="systeminfocontent">
+    <div id="navi">
+        <?php echo $this->partial('systeminfo_LeftNavi', array());?>
+    </div>
+    <div id="main">
+<?php
+
+$form = $this->form;
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formCollection($this->form);
+echo $this->form()->closeTag();
+ 
+if ($this->messages){
+    echo '<ul>';
+    foreach($this->messages as $message)
+    {
+        echo '<li>'.$message.'</li>';
+    }
+    echo '</ul>';
+}
+
+?>
+    </div>
+</div>

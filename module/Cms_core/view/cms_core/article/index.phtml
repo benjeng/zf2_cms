@@ -1,0 +1,42 @@
+<h2><?php echo $this->title;?></h2>
+<table id="cms_grid" title="Data listing" style="width:900px;" grid_url="<?php echo $this->grid_url;?>" data-options="
+            rownumbers:true,
+            singleSelect:true,
+            autoRowHeight:false,
+            pagination:true,
+            pageSize:10,
+            toolbar:'#tb'">
+    <thead>
+        <tr>
+            <th field="cms_title" width="160" sortable="true">Title</th>
+            <th field="cms_template" width="100" align="center" sortable="true">Template</th>
+            <th field="cms_url" width="160" align="left">URL</th>
+            <th field="publish_from" width="100" align="center">Publish From</th>
+            <th field="publish_to" width="100" align="center">Publish To</th>
+            <th field="_actions" width="120" align="center">Actions</th>
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="padding:5px;height:auto">
+    <div style="margin-bottom:5px">
+        <a href="/admin/article/add" class="easyui-linkbutton open-modal" cont="add-new" iconCls="icon-add" plain="true">Add</a>
+        <a href="/admin/article/bin" class="easyui-linkbutton" iconCls="icon-bin" plain="true">Bin</a>
+<!--
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
+-->
+        Publish from <input class="easyui-datebox" style="width:80px">
+        to: <input class="easyui-datebox" style="width:80px">
+        Template: 
+        <select class="easyui-combobox" panelHeight="auto" style="width:100px">
+            <option value=''>-- All --</option>
+        <?php foreach($this->template as $_key => $_item):?>
+            <option value="<?php echo $_key;?>"><?php echo $_item['name'];?></option>
+        <?php endforeach;?>
+        </select>
+        <input type="text" size="12" placeholder="keyword">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<?php
+$arrTrans = parseNavi(array(
+    "ROOT" => $this->naviArray
+));
+function parseNavi($data){
+    global $currentID;
+    $result = array();
+    foreach($data as $title => $_item){
+        $thisItem = array(
+            "id" => ++$currentID,
+            "text" => "{$title}",
+        );
+        if(is_array($_item)) $thisItem['children'] = parseNavi($_item);
+        else $thisItem["attributes"] = array("param" => $_item);
+        $result[] = $thisItem;
+    }
+    return $result;
+}
+?>
+<div id="systeminfocontent">
+    <div id="navi">
+        <?php echo $this->partial('systeminfo_LeftNavi', array());?>
+    </div>
+    <div id="main">
+        <div id="cms_navi"></div>
+        <form method="post">
+            <label for="title">Title<input type="text" name="title" id="title"></label>
+            <label for="param">Param<input type="text" name="param" id="param"></label>
+            <input type="hidden" name="current_id">
+            <input type="hidden" name="new_navi">
+            <input type="button" class="cms_btn" id="update_cms_navi" value="Update">
+            <input type="button" class="cms_btn" id="add_cms_navi" value="Add">
+            <input type="button" class="cms_btn" id="delete_cms_navi" value="Delete">
+            <input type="submit" class="cms_btn" id="save_cms_navi" value="Save">
+        </form>
+    </div>
+</div>
+<script>
+$(function(){
+    $('#cms_navi').tree({
+        data: <?php echo json_encode($arrTrans);?>,
+        dnd: true,
+        onClick: function(node){
+            $("input[name=title]").val(node.text);
+            $("input[name=param]").val(typeof node.attributes!='undefined'?node.attributes.param:"");
+            $("input[name=current_id]").val(node.id);
+        }
+    });
+    $('#save_cms_navi').click(function(){
+        var root = $('#cms_navi').tree('getRoot');
+        var treeData = $('#cms_navi').tree('getData', root.target);
+        $("input[name='new_navi']").val(JSON.stringify(treeData));
+    });
+    $('#update_cms_navi').click(function(){
+        var _id = $("input[name=current_id]").val();
+        var updateNode = $('#cms_navi').tree('find', _id);
+        $('#cms_navi').tree('update', {
+            target: updateNode.target,
+            text: $("input[name=title]").val(),
+            attributes: {param:$("input[name=param]").val()}
+        });
+    });
+    $('#delete_cms_navi').click(function(){
+        var _id = $("input[name=current_id]").val();
+        var selectedNode = $('#cms_navi').tree('find', _id);
+        $('#cms_navi').tree('remove',selectedNode.target);
+        
+        $("input[name=title]").val('');
+        $("input[name=param]").val('');
+        $("input[name=current_id]").val('');
+    });
+    $('#add_cms_navi').click(function(){
+        var node = $('#cms_navi').tree('getSelected');
+        node = node?node:$('#cms_navi').tree('getRoot');
+        $('#cms_navi').tree('insert', {
+            after: node.target,
+            data: {
+                id: $.now(),
+                text: $("input[name=title]").val(),
+                attributes: {param:$("input[name=param]").val()}
+            }
+        });
+    })
+})
+</script>

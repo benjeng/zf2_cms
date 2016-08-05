@@ -1,0 +1,9 @@
+<h2 style='margin-top:0'><?php echo $this->title;?> <span style='font-size:16px;color:green'>Add</span></h2>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('cms_category', array('action' => 'add')));
+echo $this->cmsFormHelper()->renderAddForm($form, $this);
+
+if($this->message) echo print_r($this->message,true);
+?>

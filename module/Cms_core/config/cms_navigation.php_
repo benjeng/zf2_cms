@@ -1,0 +1,23 @@
+<?php
+
+return(array(
+        "Home" => "/admin@@@class@@@id",
+        "Articles" => "/admin/article",
+        "Products" => array(
+            "Product" => "/admin/product",
+            "Price" => "//google.com",
+            "Category" => "/admin/category",
+        ),
+        "Systeminfo" => "/admin/systeminfo",
+        "Submenu" => array(
+            "Item1" => "//google.com",
+            "Sub2" => array(
+                "Item1-1" => "/",
+                "Item1-2" => "/",
+                "Filemanager" => "/admin/filemanager",
+            ),
+            "Filemanager" => "javascript:;@@@filemanager-open",
+        ),
+    )
+);
+?>

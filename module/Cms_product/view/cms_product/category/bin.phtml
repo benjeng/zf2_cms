@@ -1,0 +1,31 @@
+<h2><?php echo $this->title;?></h2>
+<table id="cms_grid" title="Articles in bin" style="width:800px;" grid_url="<?php echo $this->grid_url;?>" list_type="bin" data-options="
+            rownumbers:true,
+            singleSelect:true,
+            autoRowHeight:false,
+            pagination:true,
+            pageSize:10,
+            toolbar:'#tb'">
+    <thead>
+        <tr>
+            <th field="title" width="160" sortable="true">Name</th>
+            <th field="publish_from" width="120">Publish From</th>
+            <th field="publish_to" width="120" align="center">Publish To</th>
+            <th field="_actions" width="120" align="center">Actions</th>
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="padding:5px;height:auto">
+    <div style="margin-bottom:5px">
+        <a href="<?php echo $this->back_url;?>" class="easyui-linkbutton" iconCls="icon-back" plain="true">Back</a>
+        Template: 
+        <select class="easyui-combobox" panelHeight="auto" style="width:100px">
+            <option value=''>-- All --</option>
+        <?php foreach($this->template as $_key => $_value):?>
+            <option value="<?php echo $_key;?>"><?php echo $_value;?></option>
+        <?php endforeach;?>
+        </select>
+        <input type="text" size="12" placeholder="keyword">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
+    </div>
+</div>

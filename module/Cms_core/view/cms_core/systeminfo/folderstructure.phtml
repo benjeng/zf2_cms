@@ -1,0 +1,27 @@
+
+<div id="systeminfocontent">
+    <div id="navi">
+        <?php echo $this->partial('systeminfo_LeftNavi', array());?>
+    </div>
+    <div id="main">
+        <?php echo renderFolders($this->folders, $this);?>
+    </div>
+</div>
+
+<?php
+function renderFolders($folder, $thePage){
+//    die(print_r($folder,true));
+    $_result = "<ul id='systeminfo_folderstructure'>";
+    foreach($folder as $folderName => $subFolder){
+        $fileStatics = isset($subFolder['@@@subfileCount'])&&$subFolder['@@@subfileCount']?"(".$subFolder['@@@subfileCount']." files, ".$thePage->systeminfoHelper()->byteToSize($subFolder['@@@subfileSize']).")":"";
+        if(strpos($folderName,"@@@")!==false) continue;
+        $_result .= "<li>";
+        $_result .= "<span class='foldername'>{$folderName}</span><span class='info'>{$fileStatics}</span>";
+        $_result .= renderFolders($subFolder, $thePage);
+        $_result .= "</li>\n";
+    }
+    $_result .= "</ul>\n";
+    return $_result;
+}
+
+?>

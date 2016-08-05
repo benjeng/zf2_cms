@@ -1,0 +1,32 @@
+<h2><?php echo $this->title;?></h2>
+<table id="cms_grid" title="Users in bin" style="width:800px;" grid_url="/admin/user/grid" list_type="bin" data-options="
+            rownumbers:true,
+            singleSelect:true,
+            autoRowHeight:false,
+            pagination:true,
+            pageSize:10,
+            toolbar:'#tb'">
+    <thead>
+        <tr>
+            <th field="login" width="160" sortable="true">Login</th>
+            <th field="username" width="100" align="center" sortable="true">Username</th>
+            <th field="role" width="160" align="left">Role</th>
+            <th field="status" width="100" align="center">Status</th>
+            <th field="_actions" width="120" align="center">Actions</th>
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="padding:5px;height:auto">
+    <div style="margin-bottom:5px">
+        <a href="<?php echo $this->back_url;?>" class="easyui-linkbutton" iconCls="icon-back" plain="true">Back</a>
+        Template: 
+        <select class="easyui-combobox" panelHeight="auto" style="width:100px">
+            <option value=''>-- All --</option>
+        <?php foreach($this->template as $_key => $_value):?>
+            <option value="<?php echo $_key;?>"><?php echo $_value;?></option>
+        <?php endforeach;?>
+        </select>
+        <input type="text" size="12" placeholder="keyword">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
+    </div>
+</div>

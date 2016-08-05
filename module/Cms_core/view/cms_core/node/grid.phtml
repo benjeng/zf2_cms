@@ -1,0 +1,19 @@
+<span class="returnMessage"></span>
+<ul id="sortable">
+<?php foreach($this->nodes as $_item):
+    $iconEnable = ($_item->is_enabled==1)?"enable":"disable";
+?>
+    <li rel="<?php echo $_item->id;?>">
+        <span class="icon_sprite updown"></span>
+        <?php echo $_item->title;?>
+        <span style="float:right">
+            <a href="/admin/node/edit/<?php echo $_item->id;?>/<?php echo $this->entity_id;?>/<?php echo $this->obj_table;?>" class="icon_sprite edit"> </a>
+            <a href="/admin/node/erase/<?php echo $_item->id;?>" class="erase_node erase" rel="<?php echo $_item->id;?>"> </a>
+            <a href="/admin/node/enable/<?php echo $_item->id;?>" class="icon_sprite enable_node <?php echo $iconEnable;?>"> </a>
+        </span>
+    </li>
+<?php endforeach;?>
+</ul>
+<div style="display:block;height:25px;padding-top:7px;">
+    <a id="add" href="/admin/node/add?obj_id=<?php echo $this->entity_id;?>&obj_table=article&root_id=<?php echo $this->node_root;?>&type=<?php echo $this->node_type;?>&template=<?php echo $this->node_template;?>" class="cms_btn">Add</a> <a id="save_order" class="cms_btn">Save order</a>
+</div>
